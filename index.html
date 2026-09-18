@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <title>不動産キャッシュフロー計算</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">PROPERTY CASH FLOW</p>
+      <h1>不動産キャッシュフロー<br>かんたん計算</h1>
+      <p class="lead">購入から売却まで。数字を入れるだけで、投資の見通しをすぐ確認できます。</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel input-panel" aria-labelledby="input-title">
+      <div class="section-heading">
+        <span class="step">01</span>
+        <div><p class="kicker">条件を入力</p><h2 id="input-title">物件とローン</h2></div>
+      </div>
+      <form id="calculator" autocomplete="off">
+        <div class="field-grid">
+          <label class="field"><span>物件価格</span><span class="input-wrap"><input id="propertyPrice" type="number" value="2200" min="0" step="10" inputmode="decimal"><b>万円</b></span></label>
+          <label class="field"><span>借入額</span><span class="input-wrap"><input id="loanAmount" type="number" value="2200" min="0" step="10" inputmode="decimal"><b>万円</b></span></label>
+          <label class="field"><span>金利 <small>年率</small></span><span class="input-wrap"><input id="annualRate" type="number" value="3" min="0" step="0.1" inputmode="decimal"><b>%</b></span></label>
+          <label class="field"><span>ローン期間</span><span class="input-wrap"><input id="loanYears" type="number" value="35" min="1" step="1" inputmode="numeric"><b>年</b></span></label>
+        </div>
+
+        <div class="subheading"><span></span><h3>運用条件</h3></div>
+        <div class="field-grid">
+          <label class="field"><span>月額家賃</span><span class="input-wrap"><input id="monthlyRent" type="number" value="14" min="0" step="0.1" inputmode="decimal"><b>万円</b></span></label>
+          <label class="field"><span>年間経費</span><span class="input-wrap"><input id="annualExpenses" type="number" value="35" min="0" step="1" inputmode="decimal" aria-describedby="annual-expenses-note"><b>万円</b></span><small class="field-note" id="annual-expenses-note">固定資産税・保険・修繕費・管理費などを想定。実際の金額に変更してください</small></label>
+          <label class="field field--wide"><span>入居率</span><div class="range-row"><input id="occupancy" type="range" value="100" min="0" max="100" step="1"><span class="range-value"><output id="occupancyOutput">100</output>%</span></div></label>
+        </div>
+
+        <div class="subheading"><span></span><h3>売却条件</h3></div>
+        <div class="field-grid">
+          <label class="field"><span>保有年数</span><span class="input-wrap"><input id="holdingYears" type="number" value="10" min="1" step="1" inputmode="numeric"><b>年</b></span></label>
+          <label class="field"><span>売却予定価格</span><span class="input-wrap"><input id="salePrice" type="number" value="2000" min="0" step="10" inputmode="decimal"><b>万円</b></span></label>
+          <label class="field"><span>売却時の諸費用率</span><span class="input-wrap"><input id="saleCostRate" type="number" value="4" min="0" max="100" step="0.1" inputmode="decimal"><b>%</b></span></label>
+          <label class="field"><span>購入時諸費用</span><span class="input-wrap"><input id="purchaseCosts" type="number" value="0" min="0" step="10" inputmode="decimal"><b>万円</b></span></label>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel results-panel" aria-labelledby="result-title" aria-live="polite">
+      <div class="section-heading section-heading--light">
+        <span class="step">02</span>
+        <div><p class="kicker">シミュレーション結果</p><h2 id="result-title">収支の見通し</h2></div>
+      </div>
+      <div class="result-hero">
+        <p id="finalProfitLabel">10年間保有＋売却した場合の概算収支</p>
+        <strong id="finalProfit">+0万円</strong>
+        <span>家賃収入・売却・初期投資をすべて反映</span>
+      </div>
+      <div class="metrics">
+        <article><p>毎月のローン返済額</p><strong id="monthlyPayment">—</strong></article>
+        <article><p>年間家賃収入</p><strong id="annualRent">—</strong></article>
+        <article><p>年間キャッシュフロー</p><strong id="annualCashFlow">—</strong></article>
+        <article><p>保有期間終了時<br>ローン残高</p><strong id="remainingBalance">—</strong></article>
+        <article><p>累計キャッシュフロー</p><strong id="cumulativeCashFlow">—</strong></article>
+        <article><p>売却時の諸費用</p><strong id="saleCosts">—</strong></article>
+        <article class="metric--accent"><p>売却後の手残り</p><strong id="netSaleProceeds">—</strong></article>
+        <article><p>購入時の自己資金</p><strong id="initialInvestment">—</strong></article>
+      </div>
+      <div class="break-even">
+        <div><p>損益分岐となる売却価格</p><strong id="breakEvenPrice">—</strong></div>
+        <p>この価格以上で売却できれば、最終収支がプラスになる目安です。</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="compare-title">
+      <div class="section-heading"><span class="step">03</span><div><p class="kicker">3つのケース</p><h2 id="compare-title">売却価格を比較</h2></div></div>
+      <div id="comparison" class="comparison"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="schedule-title">
+      <div class="section-heading"><span class="step">04</span><div><p class="kicker">年ごとの推移</p><h2 id="schedule-title">キャッシュフロー表</h2></div></div>
+      <div class="table-wrap">
+        <table><thead><tr><th>年</th><th>年間CF</th><th>累計CF</th><th>年末ローン残高</th></tr></thead><tbody id="schedule"></tbody></table>
+      </div>
+      <p class="swipe-hint">← 横にスクロールできます →</p>
+    </section>
+
+    <aside class="notice"><span aria-hidden="true">i</span><p><strong>ご利用にあたって</strong>これは概算シミュレーションです。税金、減価償却、譲渡所得税、大規模修繕などは含まれていません。</p></aside>
+  </main>
+  <footer><p>PROPERTY CASH FLOW SIMULATOR</p></footer>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
