@@ -33,7 +33,7 @@
         <div class="subheading"><span></span><h3>運用条件</h3></div>
         <div class="field-grid">
           <label class="field"><span>月額家賃</span><span class="input-wrap"><input id="monthlyRent" type="number" value="14" min="0" step="0.1" inputmode="decimal"><b>万円</b></span></label>
-          <label class="field"><span>年間経費</span><span class="input-wrap"><input id="annualExpenses" type="number" value="35" min="0" step="1" inputmode="decimal"><b>万円</b></span></label>
+          <label class="field"><span>年間経費</span><span class="input-wrap"><input id="annualExpenses" type="number" value="35" min="0" step="1" inputmode="decimal"><b>万円</b></span><small class="field-note">固定資産税・保険・修繕費・管理費などを想定。実際の金額に変更してください</small></label>
           <label class="field field--wide"><span>入居率</span><div class="range-row"><input id="occupancy" type="range" value="100" min="0" max="100" step="1"><span class="range-value"><output id="occupancyOutput">100</output>%</span></div></label>
         </div>
 
@@ -50,7 +50,7 @@
     <section class="panel results-panel" aria-labelledby="result-title" aria-live="polite">
       <div class="section-heading section-heading--light">
         <span class="step">02</span>
-        <div><p class="kicker">シミュレーション結果</p><h2 id="result-title">収支の見通し</h2></div>
+        <div><p class="kicker">シミュレーション結果</p><h2 id="result-title"><span id="resultHoldingYears">10</span>年間保有＋売却した場合の概算収支</h2></div>
       </div>
       <div class="result-hero">
         <p>最終的な収支</p>

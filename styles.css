@@ -3,3 +3,4 @@
 @media(min-width:700px){.hero{padding:64px 32px 96px}main{padding:0 24px 70px;margin-top:-48px}.panel{padding:34px;margin-bottom:22px}.field-grid{grid-template-columns:repeat(4,1fr);gap:20px}.field--wide{grid-column:span 2}.metrics{grid-template-columns:repeat(4,1fr)}.comparison{grid-template-columns:repeat(3,1fr)}.swipe-hint{display:none}.input-panel{padding:40px}.comparison-card{padding:20px}}
 @media(max-width:370px){.panel{padding:20px 13px}.input-wrap input{font-size:16px;padding-left:7px}.metrics strong{font-size:14px}.break-even>div{display:block}.break-even strong{display:block;margin-top:5px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+.field .field-note{display:block;font-size:10px;line-height:1.5;margin:6px 3px 0}
