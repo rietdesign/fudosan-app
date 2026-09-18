@@ -15,6 +15,7 @@
     const input = values();
     const result = CashFlowCalculator.calculate(input);
     document.getElementById("occupancyOutput").value = input.occupancy;
+    document.getElementById("resultHoldingYears").textContent = input.holdingYears;
     document.getElementById("monthlyPayment").textContent = money(result.payment);
     document.getElementById("annualRent").textContent = money(result.annualRent);
     document.getElementById("annualCashFlow").textContent = signed(result.annualCashFlow);
